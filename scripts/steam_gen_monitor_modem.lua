@@ -59,20 +59,14 @@ local function print_progress_bar(perc, w, modem)
 	modem.callRemote("monitor_0", "write", "]%")
 	modem.callRemote("monitor_0", "setBackgroundColor", colors.white)
 
-	print_line_o(y, x + 1, (x + 1) + (perc * scale_factor), modem)
+	print_line_o(y, x + 1, (x + 1) + (perc * scale_factor) - 2, modem)
 
 	local x, y = modem.callRemote("monitor_0", "getCursorPos")
 
 	modem.callRemote("monitor_0", "setBackgroundColor", colors.black)
 end
 
-local modem = peripheral.find("modem") or error("modem no found")
-local gen = peripheral.wrap("right")
-local color = colors.gray
-
-local old_rf_stored = 0
-
-while true do
+local function loop()
 	-- get power storage info
 	local rf_stored = gen.getEnergyStored()
 	local rf_max = gen.getEnergyCapacity()
@@ -104,6 +98,16 @@ while true do
 	modem.callRemote("monitor_0", "write", tank_stored .. "/" .. tank_max)
 	modem.callRemote("monitor_0", "setCursorPos", 10, 5)
 	print_progress_bar(tank_perc, w, modem)
+end
+
+local modem = peripheral.find("modem") or error("modem no found")
+local gen = peripheral.wrap("right")
+local color = colors.gray
+
+local old_rf_stored = 0
+
+while true do
+	loop()
 
 	old_rf_stored = rf_stored
 	if Timer < 0.00001 then

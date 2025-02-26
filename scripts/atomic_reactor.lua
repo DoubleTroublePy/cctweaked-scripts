@@ -1,4 +1,4 @@
-require("graphics")
+require("lib.graphics")
 local expect = require("cc.expect")
 local expect = expect.expect
 

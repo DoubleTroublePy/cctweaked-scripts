@@ -57,12 +57,12 @@ end
 -- XXX: no error checking 
 local lenght = tonumber(arg[1])-1
 local width = tonumber(arg[2])
-local depth = tonumber(arg[3])+1
+local depth = tonumber(arg[3])
 local side = true
 local replace = false
 
 for level=1, depth do
-  if level == depth then replace = true end
+  --if level == depth then replace = true end
   for row=1, width do
     for line=1, lenght do
       dig_move()

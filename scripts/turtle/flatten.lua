@@ -1,5 +1,5 @@
 -- author: dtpy
--- version: 0.1.7
+-- version: 0.1.8
 
 function refuel()
   while true do
@@ -48,9 +48,9 @@ function dig_move(replace, item)
   replace = replace or false
   if turtle.detect() then
     turtle.dig()
-    if replace then
+  end
+  if replace then
       place_beind(item)
-    end
   end
   forward()
 end

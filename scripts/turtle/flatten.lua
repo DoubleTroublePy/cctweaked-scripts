@@ -1,21 +1,23 @@
 function forward()
-  if turtle.getFuelLevel() > 10 then return end
-  turtle.refuel(1)
+  if turtle.getFuelLevel() < 10 then
+    turtle.refuel(1)
+  end
+  turtle.forward()
 end
 
 function dig_move()
   if turtle.detect() then
-    dig()
+    turtle.dig()
   end
   forward()
 end
 
 -- main loop
 print("lenght: ")
-local lenght = io.read()
+local lenght = io.read()-1
 
 print("width: ")
-local width = io.read()
+local width = io.read()-1
 
 print("depth: ")
 local depth = io.read()
@@ -27,17 +29,19 @@ for level=1, depth do
       dig_move()
     end
     if side then
-      turtle.turnLeft()
+      turtle.turnRight()
       forward()
-      turtle.turnLeft()
+      turtle.turnRight()
     else
-      turtle.turnRight()
+      turtle.turnLeft()
       forward()
-      turtle.turnRight()
+      turtle.turnLeft()
     end
     side = not side
   end
-  turtle.digDown()
-  turtle.down()
+  if level ~= depth then
+    turtle.digDown()
+    turtle.down()
+  end
 end
 

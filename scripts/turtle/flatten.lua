@@ -1,5 +1,5 @@
 -- author: dtpy
--- version: 0.1.2
+-- version: 0.1.3
 
 function refuel()
   while true do
@@ -61,11 +61,14 @@ end
 local lenght = tonumber(arg[1])-1
 local width = tonumber(arg[2])
 local depth = tonumber(arg[3])
+local item = arg[4] or nil
+
 local side = true
 local replace = false
+if item ~= nil then depth += 1 end
 
 for level=1, depth do
-  --if level == depth then replace = true end
+  if item ~= nil and level == depth then replace = true end
   for row=1, width do
     for line=1, lenght do
       dig_move()
@@ -77,7 +80,7 @@ for level=1, depth do
         turtle.turnRight()
       else
         turtle.turnLeft()
-        dig_move(replace)
+        dig_move(replace, item)
         turtle.turnLeft()
       end
       side = not side

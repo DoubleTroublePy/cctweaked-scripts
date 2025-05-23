@@ -1,5 +1,5 @@
 -- author: dtpy
--- version: 0.1.5
+-- version: 0.1.6
 
 function refuel()
   while true do
@@ -61,7 +61,7 @@ end
 local lenght = tonumber(arg[1])-1
 local width = tonumber(arg[2])
 local depth = tonumber(arg[3])
-local item = turtle.getItemDetail(tonumber(arg([4]))) or nil
+local item = turtle.getItemDetail(tonumber(arg[4])).name or nil
 
 local side = true
 local replace = false

@@ -15,7 +15,7 @@ end
 
 function forward()
   if turtle.getFuelLevel() < 10 then
-    turtle.refuel(1)
+    refuel()
   end
   turtle.forward()
 end
@@ -41,11 +41,13 @@ function place_beind(item)
   end
 end
 
-function dig_move(item, replace)
+function dig_move(replace, item)
   replace = replace or false
   if turtle.detect() then
     turtle.dig()
-    place_beind(item)
+    if replace then
+      place_beind(item)
+    end
   end
   forward()
 end
@@ -67,7 +69,7 @@ for level=1, depth do
     end
     if side then
       turtle.turnRight()
-      dig_move(replace)
+      dig_move()
       turtle.turnRight()
     else
       turtle.turnLeft()

@@ -85,6 +85,7 @@ for level=1, depth do
     turtle.down()
     turtle.turnRight()
     turtle.turnRight()
+    side = not side
   end
 end
 

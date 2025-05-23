@@ -67,7 +67,7 @@ for level=1, depth do
     for line=1, lenght do
       dig_move()
     end
-    if row ~= width then 
+    if row ~= width then
       if side then
         turtle.turnRight()
         dig_move()
@@ -77,8 +77,8 @@ for level=1, depth do
         dig_move(replace)
         turtle.turnLeft()
       end
+      side = not side
     end
-    side = not side
   end
   if level ~= depth then
     turtle.digDown()

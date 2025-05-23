@@ -1,3 +1,6 @@
+-- author: dtpy
+-- version: 0.1.2
+
 function refuel()
   while true do
     for i=1, 16 do
@@ -85,7 +88,6 @@ for level=1, depth do
     turtle.down()
     turtle.turnRight()
     turtle.turnRight()
-    side = not side
   end
 end
 

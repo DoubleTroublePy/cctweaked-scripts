@@ -1,5 +1,5 @@
 -- author: dtpy
--- version: 0.1.4
+-- version: 0.1.5
 
 function refuel()
   while true do
@@ -28,7 +28,7 @@ function place_beind(item)
     for i=1, 16 do
       data = turtle.getItemDetail(i)
       if data.name == item then
-        select(i)
+        turtle.select(i)
         turtle.turnRight()
         turtle.turnRight()
         turtle.place()
@@ -61,7 +61,7 @@ end
 local lenght = tonumber(arg[1])-1
 local width = tonumber(arg[2])
 local depth = tonumber(arg[3])
-local item = arg[4] or nil
+local item = turtle.getItemDetail(tonumber(arg([4]))) or nil
 
 local side = true
 local replace = false

@@ -1,5 +1,5 @@
 -- author: dtpy
--- version: 0.1.3
+-- version: 0.1.4
 
 function refuel()
   while true do
@@ -65,7 +65,7 @@ local item = arg[4] or nil
 
 local side = true
 local replace = false
-if item ~= nil then depth += 1 end
+if item ~= nil then depth = depth + 1 end
 
 for level=1, depth do
   if item ~= nil and level == depth then replace = true end
